@@ -13,9 +13,11 @@ export default function Card({ data }: cardProps) {
             </figure>
             <button className="card__button">
                 {data.buttonLabel}
-                <figure>
-                    <img src="/chevron-right.png" alt={data.buttonLabel} />
-                </figure>
+                {data.type === "primary" && (
+                    <figure>
+                        <img src="/chevron-right.png" alt={data.buttonLabel} />
+                    </figure>
+                )}
             </button>
         </li>
     )
