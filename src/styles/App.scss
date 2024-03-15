@@ -5,3 +5,8 @@
 
 // Components
 @import "./components/header.scss";
+
+// Global
+body {
+    font-family: var(--font_default);
+}
