@@ -2,16 +2,17 @@ import "./styles/App.scss"
 import Header from "./components/header/header"
 import { useState, useEffect } from "react"
 import Card from "./components/card/card"
-import { iCard } from "./types/interface"
+import { ICard } from "./types/interface"
 
 function App() {
-    const [cards, setCards] = useState<iCard[]>([])
+    const [cards, setCards] = useState<ICard[]>([])
 
     async function fetchData() {
         try {
             const response = await fetch(
-                "https://64f98ead4098a7f2fc149a34.mockapi.io/api/homepage-cards"
+                `${import.meta.env.VITE_API_URL}/api/homepage-cards`
             )
+            console.log(`${import.meta.env.VITE_API_URL}/api/homepage-cards`)
             const data = await response.json()
             setCards(data)
         } catch (error) {

@@ -1,10 +1,10 @@
-import { iCard } from "./../../types/interface"
+import { ICard } from "./../../types/interface"
 
-interface cardProps {
-    data: iCard
+interface CardProps {
+    data: ICard
 }
 
-export default function Card({ data }: cardProps) {
+export default function Card({ data }: CardProps) {
     return (
         <li className={`card card--${data.type}`}>
             <p className="card__title">{data.title}</p>
