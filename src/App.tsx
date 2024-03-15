@@ -27,24 +27,28 @@ function App() {
         <>
             <Header />
             <section className="primary">
-                <p>
+                <h2>
                     Bonjour Clément, voici ce que vous pouvez faire aujourd'hui!
-                </p>
-                {cards.map(
-                    (card) =>
-                        card.type === "primary" && (
-                            <Card data={card} key={card.id} />
-                        )
-                )}
+                </h2>
+                <ul>
+                    {cards.map(
+                        (card) =>
+                            card.type === "primary" && (
+                                <Card data={card} key={card.id} />
+                            )
+                    )}
+                </ul>
             </section>
             <section className="secondary">
-                <p>Les aides disponibles</p>
-                {cards.map(
-                    (card) =>
-                        card.type === "secondary" && (
-                            <Card data={card} key={card.id} />
-                        )
-                )}
+                <h2>Les aides disponibles</h2>
+                <ul>
+                    {cards.map(
+                        (card) =>
+                            card.type === "secondary" && (
+                                <Card data={card} key={card.id} />
+                            )
+                    )}
+                </ul>
             </section>
         </>
     )
