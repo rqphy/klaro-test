@@ -5,10 +5,13 @@
 
 // Components
 @import "./components/header.scss";
+@import "./components/card.scss";
 
 // Global
 body {
     font-family: var(--font_default);
+    background-color: var(--color_secondary);
+    color: var(--color_dark);
 }
 
 // Homepage
