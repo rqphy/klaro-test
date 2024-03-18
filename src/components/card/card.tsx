@@ -28,7 +28,7 @@ export default function Card({ data }: CardProps) {
                 {data.buttonLabel}
                 {data.type === "primary" && (
                     <figure>
-                        <img src="/chevron-right.png" alt={data.buttonLabel} />
+                        <img src="/chevron-cta.png" alt={data.buttonLabel} />
                     </figure>
                 )}
             </button>
