@@ -63,6 +63,13 @@
         min-width: 150px;
         text-align: center;
 
+        @include small {
+            padding: 22px 8px;
+            p {
+                font-size: 12px;
+            }
+        }
+
         .card__illustration {
             img {
                 height: 100px;

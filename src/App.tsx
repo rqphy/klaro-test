@@ -6,6 +6,8 @@ import { ICard } from "./types/interface"
 
 function App() {
     const [cards, setCards] = useState<ICard[]>([])
+    const [isCarrouselScrolled, setIsCarrouselScrolled] =
+        useState<boolean>(false)
 
     async function fetchData() {
         try {
@@ -18,6 +20,11 @@ function App() {
         } catch (error) {
             console.error("Fetching data has failed", error)
         }
+    }
+
+    function handleCarrouselNavClick() {
+        setIsCarrouselScrolled(!isCarrouselScrolled)
+        console.log("clicked")
     }
 
     useEffect(() => {
@@ -42,14 +49,39 @@ function App() {
             </section>
             <section className="secondary">
                 <h2>Les aides disponibles</h2>
-                <ul>
-                    {cards.map(
-                        (card) =>
-                            card.type === "secondary" && (
-                                <Card data={card} key={card.id} />
-                            )
-                    )}
-                </ul>
+                <div className="secondary__carrousel">
+                    <button
+                        className={`secondary__nav secondary__nav--${
+                            isCarrouselScrolled ? "left" : "right"
+                        }`}
+                        onClick={handleCarrouselNavClick}
+                    >
+                        <div className="secondary__icon">
+                            <svg
+                                width="20"
+                                height="20"
+                                viewBox="0 0 20 20"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <path
+                                    d="M7.5 15L12.5 10L7.5 5"
+                                    stroke="white"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                />
+                            </svg>
+                        </div>
+                    </button>
+                    <ul className={isCarrouselScrolled ? "scrolled" : ""}>
+                        {cards.map(
+                            (card) =>
+                                card.type === "secondary" && (
+                                    <Card data={card} key={card.id} />
+                                )
+                        )}
+                    </ul>
+                </div>
             </section>
         </>
     )

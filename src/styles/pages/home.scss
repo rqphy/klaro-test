@@ -1,11 +1,6 @@
 .primary,
 .secondary {
-    padding: 0 var(--side_padding_desk);
     margin-bottom: 40px;
-
-    @include small {
-        padding: 0 var(--side_padding_mob);
-    }
 
     h2 {
         font-size: 16px;
@@ -21,6 +16,11 @@
 }
 
 .primary {
+    padding: 0 var(--side_padding_desk);
+
+    @include small {
+        padding: 0 var(--side_padding_mob);
+    }
     h2 {
         margin-bottom: 24px;
     }
@@ -33,11 +33,73 @@
 }
 
 .secondary {
-    ul {
+    &__carrousel {
+        position: relative;
         width: 100%;
+        overflow: hidden;
+    }
+
+    &__nav {
+        position: absolute;
+        right: 0;
+        height: 100%;
+        border: none;
+        background: linear-gradient(
+            270deg,
+            #f3f9fe 0%,
+            rgba(255, 255, 255, 0) 100%
+        );
+        cursor: pointer;
+        z-index: 10;
+
+        &--left {
+            left: 0;
+            right: auto;
+            background: linear-gradient(
+                270deg,
+                #f3f9fe 0%,
+                rgba(255, 255, 255, 0) 100%
+            );
+            transform: rotate(180deg);
+        }
+    }
+
+    &__icon {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 32px;
+        width: 32px;
+        background-color: var(--color_primary);
+        border-radius: 50%;
+
+        svg {
+            height: 20px;
+            width: 20px;
+        }
+    }
+
+    h2,
+    ul {
+        padding: 0 var(--side_padding_desk);
+        @include small {
+            padding: 0 var(--side_padding_mob);
+        }
+    }
+
+    ul {
+        width: fit-content;
         display: flex;
         justify-content: space-between;
         gap: 16px;
+
+        @include small {
+            transition: transform 0.3s ease-in-out;
+            &.scrolled {
+                transform: translateX(calc(100vw - 100%));
+            }
+        }
+
         @include small {
             gap: 8px;
         }
